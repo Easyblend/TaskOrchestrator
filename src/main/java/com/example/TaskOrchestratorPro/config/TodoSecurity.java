@@ -38,7 +38,10 @@ public class TodoSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth->
-                        auth.requestMatchers(HttpMethod.GET, "/todo", "/todos/**").permitAll()
+                        auth.requestMatchers(HttpMethod.GET,   "/swagger-ui.html",
+                                        "/swagger-ui/**",
+                                        "/swagger",
+                                        "/v3/api-docs/**", "/todo", "/todos/**").permitAll()
                                 .anyRequest().authenticated()
                 ).httpBasic(Customizer.withDefaults());
 
