@@ -28,12 +28,6 @@ public class TodoSecurity {
 
     private static final Logger log = LoggerFactory.getLogger(TodoSecurity.class);
 
-    @PostConstruct
-    public void logCredentials() {
-        log.info("Spring Security username: {}", appUser);
-        log.info("Spring Security password: {}", appPassword);
-    }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
