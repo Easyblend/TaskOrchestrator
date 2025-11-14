@@ -28,17 +28,14 @@ public class TodoSecurity {
 
     private static final Logger log = LoggerFactory.getLogger(TodoSecurity.class);
 
-    @PostConstruct
-    public void logCredentials() {
-        log.info("Spring Security username: {}", appUser);
-        log.info("Spring Security password: {}", appPassword);
-    }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth->
-                        auth.requestMatchers(HttpMethod.GET, "/todo", "/todos/**").permitAll()
+                        auth.requestMatchers(HttpMethod.GET,   "/swagger-ui.html",
+                                        "/swagger-ui/**",
+                                        "/swagger",
+                                        "/v3/api-docs/**", "/todo", "/todos/**").permitAll()
                                 .anyRequest().authenticated()
                 ).httpBasic(Customizer.withDefaults());
 
