@@ -35,7 +35,7 @@ public class TodoSecurity {
                         auth.requestMatchers(HttpMethod.GET,   "/swagger-ui.html",
                                         "/swagger-ui/**",
                                         "/swagger",
-                                        "/v3/api-docs/**", "/todo", "/todos/**").permitAll()
+                                        "/v3/api-docs/**", "/todos", "/todos/**").permitAll()
                                 .anyRequest().authenticated()
                 ).httpBasic(Customizer.withDefaults());
 
