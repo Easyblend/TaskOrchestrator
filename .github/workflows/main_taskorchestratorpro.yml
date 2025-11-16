@@ -46,13 +46,6 @@ jobs:
         with:
           name: java-app
       
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_3F7824EA037C4508B85A99D8A4CDEE13 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4A818EC8C2A4408CA9DBDD013E2F0C77 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_EA86CC9EC1C84B50824DAC1B8A79728D }}
-
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
@@ -60,4 +53,5 @@ jobs:
           app-name: 'TaskOrchestratorPro'
           slot-name: 'Production'
           package: '*.jar'
+
           
